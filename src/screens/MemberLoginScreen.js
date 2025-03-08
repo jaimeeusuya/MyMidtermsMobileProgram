@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import {Text, View, TextInput, Button, ImageBackground, SafeAreaView, Image} from "react-native";
+import {Text, View, TextInput, Button, ImageBackground, SafeAreaView, Image , TouchableOpacity} from "react-native";
 
 import {style} from "../styles/MemberLoginStyle";
 
-const MemberLoginScreen = () => {
+import Buttons from "../Assets/Components/buttons";
+
+const MemberLoginScreen = ({navigation}) => {
+
+    const adminLinkPress = () => {
+        navigation.navigate("AdminLoginScreen");
+    }
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -38,16 +44,27 @@ const MemberLoginScreen = () => {
                     style={style.TextInput}
                 />
 
-                <View style={style.buttonsContainer}> 
-                    <Button
-                        style={style.buttonDesign}
+                <View style={style.buttonsContainer}>
+
+                    <Buttons.PrimaryButton 
                         title="Log in"
                     />
 
-                    <Button 
-                        title="Sign up"
-                    />
                 </View>
+
+                <Text>
+                    Looking for Admin Login? {' '}
+                    <TouchableOpacity
+                        onPress={adminLinkPress}
+                    >
+                        <Text 
+                            style={style.link}
+                        >
+                            Click Here
+
+                        </Text>
+                    </TouchableOpacity>
+                </Text>
 
 
             </SafeAreaView>

@@ -6,6 +6,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 
 import MemberLoginScreen from "./src/screens/MemberLoginScreen"
+import AdminLoginScreen from "./src/screens/AdminLoginScreen"
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,8 @@ const App = () => {
             screenOptions={{headerShown: false}}>
 
             <Stack.Screen name="MemberLoginScreen" component={MemberLoginScreen} />
+            <Stack.Screen name="AdminLoginScreen" component={AdminLoginScreen} />
+
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

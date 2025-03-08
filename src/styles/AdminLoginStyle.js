@@ -19,7 +19,7 @@ export const style = StyleSheet.create (
         },
 
         appTitle: {
-            fontSize: 50,
+            fontSize: 40,
             fontWeight: "bold",
             marginBottom: 20
         },
