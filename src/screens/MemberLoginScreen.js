@@ -8,8 +8,13 @@ import Buttons from "../Assets/Components/buttons";
 const MemberLoginScreen = ({navigation}) => {
 
     const adminLinkPress = () => {
+        // much better if hinaharang if di na meet minimum requirements for login
         navigation.navigate("AdminLoginScreen");
     }
+
+    // const handleInputChange = () => {
+    //     // maganda eto ang gamitin para sa onchangetext para na ccheck din if nakapag lagay na ba sila while typing
+    // }
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -52,11 +57,14 @@ const MemberLoginScreen = ({navigation}) => {
 
                 </View>
 
+{/* bakit may ganito ? so that means makikita ng members yung login file ??  */}
                 <Text>
                     Looking for Admin Login? {' '}
                     <TouchableOpacity
                         onPress={adminLinkPress}
                     >
+                        {/* di pantay click here */}
+
                         <Text 
                             style={style.link}
                         >
