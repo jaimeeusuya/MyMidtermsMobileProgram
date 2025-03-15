@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-// why use different styling sheet parehas lang naman ng contents ? 
 export const style = StyleSheet.create (
     {
         container: {
@@ -42,11 +41,16 @@ export const style = StyleSheet.create (
             marginBottom: 100,
         },
 
-        link: {
-            color: 'blue', 
-            textDecorationLine: 'underline', 
-          },
-
+        errorText: {
+            color: 'red',
+            fontSize: 14,
+            marginBottom: 10,
+        },
         
+        inputError: {
+            borderColor: 'red',
+            borderWidth: 1
+        }
+       
     }
 )

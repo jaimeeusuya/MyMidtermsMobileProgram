@@ -1,27 +1,48 @@
 import React, { useState } from "react";
-import {Text, View, TextInput, Button, ImageBackground, SafeAreaView, Image , TouchableOpacity} from "react-native";
+import {Text, View, TextInput, SafeAreaView, Image, Alert } from "react-native";
 
 import {style} from "../styles/MemberLoginStyle";
 
 import Buttons from "../Assets/Components/buttons";
 
-const MemberLoginScreen = ({navigation}) => {
+const MemberLoginScreen = ({ navigation }) => {
 
-    const adminLinkPress = () => {
-        // much better if hinaharang if di na meet minimum requirements for login
-        navigation.navigate("AdminLoginScreen");
-    }
+        const [formData, setFormData] = useState({
+            username: '',
+            password: ''
+        });
 
-    // const handleInputChange = () => {
-    //     // maganda eto ang gamitin para sa onchangetext para na ccheck din if nakapag lagay na ba sila while typing
-    // }
+        const [errors, setErrors] = useState({ username: '', password: '' });
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+        const handleInputChange = (field, value) => {
+            setFormData({ ...formData, [field]: value })
+
+            setErrors({ ...errors, [field]: ''});
+        };
+
+        const validateForm = () => {
+            let valid = true;
+            const newErrors = {} // temporarily collects error messages
+
+            if (!formData.username.trim()) {
+                newErrors.username = "Username is required.";
+                valid = false;
+            }
+
+            if (!formData.password.trim()) {
+                newErrors.password = "Password is required.";
+                valid = false;
+            }
+
+            setErrors(newErrors);
+
+            if (valid) {
+                Alert.alert("Success", "Login Successful!");
+                navigation.navigate("MemberDashboardScreen");
+            }
+        }
 
     return(
-
-        <ImageBackground>
 
             <SafeAreaView style={style.container}>
 
@@ -35,49 +56,33 @@ const MemberLoginScreen = ({navigation}) => {
                 </Text>
 
                 <TextInput 
-                    value={username}
+                    style={[style.TextInput, errors.username && style.inputError]}
+                    value={formData.username}
                     placeholder="Enter Username"
-                    onChangeText = {(text) => setUsername (text)}
-                    style={style.TextInput}
+                    onChangeText = {(value) => handleInputChange('username', value)}
+                />
+                {errors.username ? <Text style={style.errorText}>{errors.username}</Text> : null}
+
+                <TextInput
+                    style={[style.TextInput, errors.password && style.inputError]}
+                    value={formData.password}
+                    placeholder="Enter Password"
+                    onChangeText = {(value) => handleInputChange('password', value)}
+                    secureTextEntry = {true}
                 />
 
-                <TextInput 
-                    value={password}
-                    placeholder="Enter Password"
-                    onChangeText = {(text) => setPassword (text)}
-                    secureTextEntry = {true}
-                    style={style.TextInput}
-                />
+                {errors.password ? <Text style={style.errorText}>{errors.password}</Text> : null}
 
                 <View style={style.buttonsContainer}>
 
                     <Buttons.PrimaryButton 
                         title="Log in"
+                        onPress={validateForm}
                     />
 
                 </View>
 
-{/* bakit may ganito ? so that means makikita ng members yung login file ??  */}
-                <Text>
-                    Looking for Admin Login? {' '}
-                    <TouchableOpacity
-                        onPress={adminLinkPress}
-                    >
-                        {/* di pantay click here */}
-
-                        <Text 
-                            style={style.link}
-                        >
-                            Click Here
-
-                        </Text>
-                    </TouchableOpacity>
-                </Text>
-
-
             </SafeAreaView>
-
-        </ImageBackground>
     );
 
 }
