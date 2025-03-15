@@ -16,6 +16,7 @@ const MemberLoginScreen = ({ navigation }) => {
 
     return(
 
+        // no point in wrapping yung buong screen ng imagebackground kasi di naman kayo gumamit ng background image
         <ImageBackground>
 
             <SafeAreaView style={style.container}>
@@ -52,11 +53,13 @@ const MemberLoginScreen = ({ navigation }) => {
 
                 </View>
 
+{/* okay lang to but again mas okay if iisang login nalang then i rread ng backend niyo if admin ba or member ang nag login */}
                 <Text>
                     Looking for Member Login? {' '}
                     <TouchableOpacity
                         onPress = {memberLinkPress}
                     >
+                        {/* di pantay click here */}
                         <Text style={style.link}>Click Here</Text>
                     </TouchableOpacity>
                 </Text>

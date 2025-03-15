@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+// why use different styling sheet parehas lang naman ng contents ? 
 export const style = StyleSheet.create (
     {
         container: {

@@ -22,7 +22,6 @@ const App = () => {
           <Stack.Navigator
             initialRouteName="MemberLoginScreen"
             screenOptions={{headerShown: false}}>
-
             <Stack.Screen name="MemberLoginScreen" component={MemberLoginScreen} />
             <Stack.Screen name="AdminLoginScreen" component={AdminLoginScreen} />
 
